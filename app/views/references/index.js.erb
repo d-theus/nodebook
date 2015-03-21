@@ -1,0 +1,4 @@
+<% rs = Reference.all.map do |r| %>
+  <% { from: r.node_id, to: r.neighbour_id } %>
+<% end %>
+<%= raw rs.to_json %>

@@ -1,0 +1,66 @@
+@ed-w: 48%;
+@ed-h: 500px;
+.mde-halfscreen{
+  width: @ed-w;
+  height: @ed-h;
+  float: left;
+  padding: 0 10px 0 10px;
+}
+#md_editor {
+  &:extend(.mde-halfscreen);
+}
+
+#md_render {
+  &:extend(.mde-halfscreen);
+  overflow-y: scroll;
+}
+
+#editor_pair {
+  .mde-toggles{
+    height: 24px;
+    width: 100%;
+    list-style: none;
+    position: relative;
+    li {
+      display: inline-block;
+    }
+  }
+  .mde-dropdown{
+    border: solid black 1px;
+    .mde-dropdown-menu{
+      display: none;
+      position: absolute;
+      top: 20px;
+      height: 380px;
+      overflow: scroll;
+      z-index: 5;
+      background: white;
+    }
+    &:hover{
+      .mde-dropdown-menu{
+        list-style-type: none;
+        position: absolute;
+        display: block;
+        li {
+          margin-left: -20%;
+          margin-right: 20%;
+          padding: 0px;
+        }
+      }
+    }
+    li {
+      display: block;
+      transition: background 200ms;
+      &:hover{
+        background: lightblue;
+        cursor: default;
+      }
+    }
+  }
+
+  &:before {
+    overflow: auto;
+  }
+  overflow: auto;
+}
+

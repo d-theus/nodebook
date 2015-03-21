@@ -1,0 +1,24 @@
+%h1=@node.title
+
+%nav.collapse
+  - neighbours = @node.neighbours
+  -if neighbours.any?
+    %hr
+    %h3 Index
+    %ul
+    - @node.neighbours.map do |c|
+      %li
+        = link_to c.title, node_path(c)
+    %hr
+
+%article#node_preview
+  %script
+    $('article').html(marked("#{j @node.content.html_safe}"));
+%nav
+  - parents = Reference.where(:neighbour_id, @node.id)
+  - if parents.any?
+    %h3 Up to 
+    %ul
+      - parents.each do |p|
+        %li
+          = link_to p.title, node_path(p) 

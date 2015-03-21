@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+%html
+  %head
+    %title Nodebook
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    %header
+      %div
+        %h1
+          =link_to 'Nodebook', '/'
+      %div
+        %nav
+          %ul
+            %li= link_to 'My nodebook', '/'
+            %li= link_to 'About', about_path
+      %hr
+    = yield

@@ -1,0 +1,11 @@
+<% ns = Node.all.map do |n| %>
+  <% ns = n.neighbours.size %>
+  <% {
+    id: n.id,
+    label: n.title,
+    radius: 10 + 2*n.level,
+    level: n.level,
+    shape: 'dot'
+  } %>
+<% end %>
+<%= raw ns.to_json %>

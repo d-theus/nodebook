@@ -1,0 +1,10 @@
+%b
+  Create child
+%a#instant_new_close
+  x
+= simple_form_for @parent do |pf|
+  = pf.simple_fields_for @node do |f|
+    = f.input :title, input_html: { maxlength: 30 }
+    = f.input :level, collection: 0..@parent.level
+    = f.input :content
+    = f.submit
