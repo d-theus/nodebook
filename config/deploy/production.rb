@@ -60,4 +60,9 @@
 #     # password: 'please use keys'
 #   }
 #
-server '62.109.2.126', user: 'web', roles: %w(web app db)
+server 'nodebook',
+  user: 'web',
+  roles: %w(web app db)
+
+set :application, 'nodebook'
+set :repo_url, 'https://github.com/d-theus/nodebook.git'
