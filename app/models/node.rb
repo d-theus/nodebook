@@ -1,4 +1,5 @@
 class Node < ActiveRecord::Base
+  belongs_to :user
   has_many :references
   has_many :neighbours, through: :references, class_name: 'Node'
   validates_presence_of :title

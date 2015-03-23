@@ -1,4 +1,4 @@
-<% ns = Node.all.map do |n| %>
+<% ns = current_user.nodes.map do |n| %>
   <% ns = n.neighbours.size %>
   <% {
     id: n.id,

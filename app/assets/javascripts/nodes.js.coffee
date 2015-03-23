@@ -27,7 +27,6 @@ ready = ()->
         levelSeparation: 100
       },
       stabilize: true,
-      smoothCurves: false,
       edges: {
         style: 'arrow'
       }

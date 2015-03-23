@@ -17,3 +17,8 @@ gem 'ace-rails-ap'
 gem 'simple_form'
 gem 'pry-rails'
 gem 'devise'
+group :development do
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano-bundler'
+end

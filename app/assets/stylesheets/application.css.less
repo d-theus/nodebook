@@ -1,1 +1,37 @@
-//= require_tree .
+//= require helpers
+@import 'theme.less';
+@import 'static_pages.less';
+@import 'references.less';
+@import 'nodes.less';
+@import 'editor.less';
+
+body {
+  padding: 0px 10%;
+  background: @body-bg;
+}
+hgroup {
+  a{
+    text-decoration: none;
+    color: @text-color;
+  }
+}
+header{
+  hgroup{
+    float: left;
+    &:extend(.clearfix);
+  }
+  nav{
+    float: right;
+    li {
+      list-style: none;
+      display: inline-block;
+    }
+    &:extend(.clearfix);
+  }
+  display: block;
+  height: 80px;
+}
+.main {
+  background: @main-bg;
+  height: 100%;
+}

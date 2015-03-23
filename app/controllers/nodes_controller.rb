@@ -1,6 +1,7 @@
 class NodesController < ApplicationController
+  before_action :authenticate_user!
   before_action :fetch_node, only: [:show, :edit, :update, :destroy]
-  before_action :construct_node, only: [:new]
+  before_action :new_node, only: [:new, :create]
 
   def new
   end
@@ -12,7 +13,7 @@ class NodesController < ApplicationController
   end
 
   def create
-    @node = Node.new(node_params)
+    @node.update_attributes(node_params)
     if @node.save
       make_references
       redirect_to node_path(@node)
@@ -29,6 +30,7 @@ class NodesController < ApplicationController
     if child_params
       @parent = Node.find(params[:id])
       @child = @parent.neighbours.build(child_params)
+      @child.user = current_user
       if @child.save
         make_references(@child)
         @parent.content += "\n[#{@child.title}]: \"/nodes/#{@child.id}\""
@@ -67,14 +69,11 @@ class NodesController < ApplicationController
       f.js
     end
   end
+
   private
 
   def fetch_node
-    @node = Node.find(params[:id])
-  end
-
-  def construct_node
-    @node = Node.new
+    @node = current_user.nodes.find(params[:id])
   end
 
   def node_params
@@ -83,7 +82,7 @@ class NodesController < ApplicationController
 
   def child_params
     if params[:node][:node]
-      params.require(:node).require(:node).permit(:title, :content)
+      params.require(:node).require(:node).permit(:title, :content, :level)
     end
   end
 
@@ -94,5 +93,9 @@ class NodesController < ApplicationController
     node.references.where('neighbour_id in (?)', old - actual).delete_all
     node.references.build( (actual - old).map { |n| {neighbour_id: n} })
     node.save!
+  end
+
+  def new_node
+    @node = current_user.nodes.build
   end
 end
