@@ -22,3 +22,7 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-bundler'
 end
+
+group :production do
+  gem 'thin'
+end
