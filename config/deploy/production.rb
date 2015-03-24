@@ -63,6 +63,3 @@
 server 'nodebook',
   user: 'web',
   roles: %w(web app db)
-
-set :application, 'nodebook'
-set :repo_url, 'https://github.com/d-theus/nodebook.git'
