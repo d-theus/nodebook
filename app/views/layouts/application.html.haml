@@ -10,8 +10,8 @@
       %header
         %div
           %hgroup
-            %h1
-              =link_to 'Nodebook', welcome_path
+            %a{ href: welcome_path }
+              = inline_svg 'logo'
         %div
           %nav
             %ul
@@ -25,4 +25,5 @@
         %p.notice= notice
         %p.notice= alert
 
-      = yield
+      %div.content
+        = yield
