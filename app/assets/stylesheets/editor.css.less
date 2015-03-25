@@ -1,0 +1,26 @@
+@ed-w: 48%;
+@ed-h: 500px;
+.mde-halfscreen{
+  width: @ed-w;
+  height: @ed-h;
+}
+#md_editor {
+  .mde-halfscreen;
+  float: left;
+}
+
+#md_render {
+  .mde-halfscreen;
+  overflow-y: scroll;
+  float: right;
+  border: 1px dotted #999;
+  margin-top: 5px;
+}
+
+#editor_pair {
+  &:before {
+    overflow: auto;
+  }
+  overflow: auto;
+}
+

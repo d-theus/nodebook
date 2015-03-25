@@ -1,80 +1,81 @@
-%h2 What is it?
-%p
-  Nodebook is an application
-  for taking notes and organizing them
-  in a non-linear structure.
-%h2 Why use nodebook?
-%p
-  Associative approach helps you to recall
-  things faster, as long as you remember
-  how things are connected with each other.
-  Human's memory is associative, so let your
-  notes be organized in an easy memorable
-  way.
-%h2 Concepts
-%h3 Node
-%p
-  Think of it as a single note, though it is
-  not necessarily a full and multisectioned
-  article. It could be index, section or even
-  a single definition as well.
-%p
-  Nodes have levels. Level is a value of node
-  given by you. It's meant to organize nodes
-  hierarchically, i.e. topic index should have
-  greater value than articles, section or
-  definitions it refers to.
-%p
-  Greater level also force node to be bigger
-  and arranged highter on a <a href="#map">map</a>.
-%p
-  Nodes also have title that shown on a map
-  to identify a node and content, which is
-  text written basically in <a href="#mde">extended
-  markdown</a>.
-%h3#map Map
-%p
-  Map is a graphical representation of your
-  nodebook: all the nodes are shown here
-  according to their levels from top to
-  bottom. If one node <a href="#ref">referred</a> to
-  another there is an edge(arrow), pointing from
-  the referring node to the referred one.
+%article
+  %h2 What is it?
+  %p
+    Nodebook is an application
+    for taking notes and organizing them
+    in a non-linear structure.
+  %h2 Why use nodebook?
+  %p
+    Associative approach helps you to recall
+    things faster, as long as you remember
+    how things are connected with each other.
+    Human's memory is associative, so let your
+    notes be organized in an easy memorable
+    way.
+  %h2 Concepts
+  %h3 Node
+  %p
+    Think of it as a single note, though it is
+    not necessarily a full and multisectioned
+    article. It could be index, section or even
+    a single definition as well.
+  %p
+    Nodes have levels. Level is a value of node
+    given by you. It's meant to organize nodes
+    hierarchically, i.e. topic index should have
+    greater value than articles, section or
+    definitions it refers to.
+  %p
+    Greater level also force node to be bigger
+    and arranged highter on a <a href="#map">map</a>.
+  %p
+    Nodes also have title that shown on a map
+    to identify a node and content, which is
+    text written basically in <a href="#mde">extended
+    markdown</a>.
+  %h3#map Map
+  %p
+    Map is a graphical representation of your
+    nodebook: all the nodes are shown here
+    according to their levels from top to
+    bottom. If one node <a href="#ref">referred</a> to
+    another there is an edge(arrow), pointing from
+    the referring node to the referred one.
 
-%h3#ref Reference
-%p
-  One node (let's call it A) could have link to
-  another (B). These links could be explicit,
-  represented just as link definitions at the
-  bottom of node's content.
-%p
-  For A to have edge to B there must be a link
-  definition in the content of A.
-%p
-  Just use that definition somewhere in A's
-  content to refer to B.
+  %h3#ref Reference
+  %p
+    One node (let's call it A) could have link to
+    another (B). These links could be explicit,
+    represented just as link definitions at the
+    bottom of node's content.
+  %p
+    For A to have edge to B there must be a link
+    definition in the content of A.
+  %p
+    Just use that definition somewhere in A's
+    content to refer to B.
 
-%h2 Composing nodes
-%p
-  When you click 'Add node' button above the map or
-  click 'Add child' or 'Edit' in a node's menu inside
-  a map, you will find yourself on a nodes edit page.
-%p
-  Here you can (re)name node, (re)assign level and edit
-  node's content.
-%h3 Editor
-%p
-  Editor is two-sided. One is a text-editor and the other
-  is a rendered result, what you will see as node's content
-  when you are done.
-%p#mde
-  Language of the source text in that text-editor side is
-  <a href="http://wikipedia.org/wiki/markdown">markdown</a>.
-  There are also some extensions to typeset mathematical formulas
-  using latex.
-%p
-  To type inline math formulae, surround it with dollar signs($).
-  For block math, use double dollar signs. Also see <a href="#examples">
-  examples</a>.
-%h2#examples Examples
+  %h2 Composing nodes
+  %p
+    When you click 'Add node' button above the map or
+    click 'Add child' or 'Edit' in a node's menu inside
+    a map, you will find yourself on a nodes edit page.
+  %p
+    Here you can (re)name node, (re)assign level and edit
+    node's content.
+  %h3 Editor
+  %p
+    Editor is two-sided. One is a text-editor and the other
+    is a rendered result, what you will see as node's content
+    when you are done.
+  %p#mde
+    Language of the source text in that text-editor side is
+    <a href="http://wikipedia.org/wiki/markdown">markdown</a>.
+    There are also some extensions to typeset mathematical formulas
+    using latex.
+  %p
+    To type inline math formulae, surround it with dollar signs($).
+    For block math, use double dollar signs. Also see <a href="#examples">
+    examples</a>.
+  %h2#examples Examples
 

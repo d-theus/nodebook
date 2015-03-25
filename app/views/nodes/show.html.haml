@@ -1,15 +1,5 @@
-%h1=@node.title
-
-%nav.collapse
-  - neighbours = @node.neighbours
-  -if neighbours.any?
-    %hr
-    %h3 Index
-    %ul
-    - @node.neighbours.map do |c|
-      %li
-        = link_to c.title, node_path(c)
-    %hr
+%center
+  %h1= @node.title
 
 %article#node_preview
   %script
@@ -20,5 +10,4 @@
     %h3 Up to 
     %ul
       - parents.each do |p|
-        %li
-          = link_to p.title, node_path(p) 
+        %li= link_to p.title, node_path(p) 

@@ -1,15 +1,3 @@
 %div#editor_pair
-  %div.mde-toggles
-    %ul
-      %li
-        %div.mde-dropdown
-          %span.mde-dropdown-toggle
-            theme
-            %span.caret
-          %ul.mde-dropdown-menu#mde_themes_menu
-            - [ 'ambiance', 'chaos', 'chrome', 'clouds', 'clouds_midnight', 'cobalt', 'crimson_editor', 'dawn', 'dreamweaver', 'eclipse', 'github', 'idle_fingers', 'katzenmilch', 'kr_theme', 'kuroir', 'merbivore', 'merbivore_soft', 'mono_industrial', 'monokai', 'pastel_on_dark', 'solarized_dark', 'solarized_light', 'terminal', 'textmate', 'tomorrow', 'tomorrow_night', 'tomorrow_night_blue', 'tomorrow_night_bright', 'tomorrow_night_eighties', 'twilight', 'vibrant_ink', 'xcode', ]. each do |theme|
-              %li{ 'data-theme' => theme}= theme
-
-  %div
-    %div.input.text#md_editor
-    %div.text#md_render
+  %div.input.text#md_editor
+  %div.text#md_render

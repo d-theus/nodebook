@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 20150323105753) do
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "level",      default: 0
     t.integer  "user_id"
   end
 

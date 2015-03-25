@@ -10,7 +10,7 @@
       %header
         %div
           %hgroup
-            %a{ href: welcome_path }
+            %a{ href: (user_signed_in? ? '/' : welcome_path) }
               = inline_svg 'logo'
         %div
           %nav
@@ -20,10 +20,15 @@
                 %li= link_to 'Log out', destroy_user_session_path, method: :delete
               - else
                 %li= link_to 'Log in', new_user_session_path
-              %li= link_to 'About', about_path
-      %div
-        %p.notice= notice
-        %p.notice= alert
+      %div.information
+        -if notice
+          %span.notice= notice
+        -if alert
+          %span.alert= alert
 
       %div.content
         = yield
+      %footer
+        %nav
+          %ul
+            %li= link_to 'About', about_path

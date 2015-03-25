@@ -22,10 +22,6 @@ ready = ()->
     opt = {
       width: '100%',
       height: '100%'
-      hierarchicalLayout: {
-        direction: "DU",
-        levelSeparation: 100
-      },
       stabilize: true,
       edges: {
         style: 'arrow'
@@ -35,6 +31,9 @@ ready = ()->
     vis.net = new vis.Network(
       document.getElementById 'network',
     vis.data, opt)
+
+    $(window).on 'resize', ()->
+      vis.net.redraw()
 
     menu = $('#network_menu')
     inew = $('#instant_new')

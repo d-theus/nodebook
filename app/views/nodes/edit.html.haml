@@ -1,5 +1,8 @@
 %h1 Edit node #{@node.title}
 
-= link_to 'Delete node', node_path(@node), method: :delete, data: { confirm: 'Are you sure?'}
+= link_to('Delete node',                     |
+          node_path(@node),                  |
+          method: :delete,                   |
+          data: { confirm: 'Are you sure?'}) |
 
 = render 'form'

@@ -16,15 +16,11 @@ class window.Editor
     mdm = require('ace/mode/markdown').Mode
     @aedit.getSession().setMode(new mdm())
 
-    this.setTheme 'twilight'
+    this.setTheme 'solarized_dark'
     $('#md_render').html(marked @aedit.getValue() )
 
     @aedit.getSession().on 'change', this._change.bind(this)
     @aedit.getSession().on 'changeScrollTop', this._syncScrolls.bind(this)
-
-    $('#mde_themes_menu>li').on 'click', ()->
-      theme = $(this).attr('data-theme')
-      @aedit.setTheme  theme
 
     window.editor = this
 
