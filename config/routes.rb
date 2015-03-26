@@ -18,5 +18,5 @@ Rails.application.routes.draw do
 
   post 'tjax/convert'
 
-  root 'nodes#index'
+  root 'static_pages#welcome'
 end

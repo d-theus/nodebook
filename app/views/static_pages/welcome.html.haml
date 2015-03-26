@@ -2,11 +2,8 @@
   %h1 Nodebook
   %h3 
     All your nodes organized in a memorable way.
-  - unless user_signed_in?
-    =link_to 'Learn more', about_path, class: :btn
-    or
-    =link_to 'Sign up', new_user_registration_path, class: :btn
-    or
-    =link_to 'Log in', new_user_session_path, class: :btn
-  - else
-    =link_to 'My nodebook', nodes_path(current_user), class: :btn
+  =link_to 'Learn more', about_path, class: :btn
+  or
+  =link_to 'Sign up', new_user_registration_path, class: :btn
+  or
+  =link_to 'Log in', new_user_session_path, class: :btn
