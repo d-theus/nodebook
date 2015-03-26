@@ -38,6 +38,11 @@ ready = ()->
     menu = $('#network_menu')
     inew = $('#instant_new')
 
+    hideMenu = ()->
+      menu.addClass 'hidden'
+      inew.addClass 'hidden'
+      true
+
     vis.net.on 'select', (prop)->
       ids = prop.nodes
       inew.addClass 'hidden'
@@ -60,9 +65,8 @@ ready = ()->
         menu.removeClass 'hidden'
       else
         menu.addClass 'hidden'
-    vis.net.on 'dragStart', (prop)->
-      menu.addClass 'hidden'
-      inew.addClass 'hidden'
+    vis.net.on 'dragStart', hideMenu
+    vis.net.on 'viewChanged', hideMenu
 
 
   if document.getElementById('editor_pair')

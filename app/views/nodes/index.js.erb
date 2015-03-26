@@ -1,9 +1,10 @@
 <% ns = current_user.nodes.map do |n| %>
-  <% ns = n.neighbours.size %>
+  <% ns = n.neighbours %>
+  <% val = ns.reduce(ns.size) { |acc, e| acc += e.neighbours.size } %>
   <% {
     id: n.id,
     label: n.title,
-    radius: 10 + 2*ns,
+    radius: 10 + 2*val,
     shape: 'dot'
   } %>
 <% end %>

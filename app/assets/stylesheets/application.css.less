@@ -60,6 +60,11 @@
   &:after{ clear: both; }
 }
 
+.hidden {
+  visibility: hidden;
+}
+
+
 
 @import 'menu.less';
 
@@ -223,6 +228,11 @@ article {
   left: 16%;
 }
 
+@keyframes flashShrink{
+  from {  }
+  99% { transform: scaleX(0); }
+  to { transform: scale(0);}
+}
 .flash{
   &:before{
     font-weight: bold;
@@ -232,6 +242,14 @@ article {
   padding: 8px;
   display: inline-block;
   left: 15%;
+
+
+  transform-origin: 0 0;
+  animation-name: flashShrink;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in;
+  animation-duration: 0.3s;
+  animation-delay: 3s;
 }
 .notice{
   .flash;
