@@ -1,4 +1,3 @@
-%h1 My nodebook
 %div#network_menu.menu.hidden
   %ul
     %li= link_to 'Open',       '#', id: 'network_menu_open'
@@ -8,6 +7,8 @@
 %div#edit_style.menu.hidden
 %div.main
   %center
+    %h1 My nodebook
     %div#network_panel
-      = link_to '+', node_new_path, class: 'btn btn-bold'
+      %a{ href: node_new_path }
+        = inline_svg 'icons/plus'
     %div#network

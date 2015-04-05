@@ -29,7 +29,9 @@ set :repo_url, 'https://github.com/d-theus/nodebook.git'
 # set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
 
 # Default value for default_env is {}
-set :default_env, { path: "/usr/share/ruby/.rvm/rubies/default/bin:$PATH" }
+set :default_env, {
+  path: '/usr/share/rbenv/shims:$PATH'
+}
 set :rails_env, 'production'
 # Default value for keep_releases is 5
 # set :keep_releases, 5

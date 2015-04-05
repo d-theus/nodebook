@@ -1,6 +1,6 @@
 = simple_form_for @node do |f|
   = f.input :title
-  = f.input :content, hidden: true
+  = f.input :content
   %div.input
     = render 'shared/md_editor'
   = f.submit

@@ -16,7 +16,7 @@ class window.Editor
     mdm = require('ace/mode/markdown').Mode
     @aedit.getSession().setMode(new mdm())
 
-    this.setTheme 'solarized_dark'
+    this.setTheme 'solarized_light'
     $('#md_render').html(marked @aedit.getValue() )
 
     @aedit.getSession().on 'change', this._change.bind(this)

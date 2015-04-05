@@ -18,7 +18,7 @@ class NodesController < ApplicationController
       make_references
       redirect_to node_path(@node)
     else
-      flash[:error] = 'Failed to create node.'
+      flash[:alert] = 'Failed to create node.'
       render :new
     end
   end
@@ -35,9 +35,9 @@ class NodesController < ApplicationController
         make_references(@child)
         @parent.content += "\n[#{@child.title}]: \"/nodes/#{@child.id}\""
         make_references(@parent)
-        flash[:errors] = 'Failed to associate nodes'
+        flash[:alert] = 'Failed to associate nodes'
       else
-        flash[:errors] = 'Failed to create child'
+        flash[:alert] = 'Failed to create child'
       end
       redirect_to '/'
     else
@@ -45,7 +45,7 @@ class NodesController < ApplicationController
         make_references(@node)
         redirect_to node_path(@node)
       else
-        flash[:errors] = 'Failed to update node'
+        flash[:alert] = 'Failed to update node'
         render 'edit'
       end
     end
@@ -55,7 +55,7 @@ class NodesController < ApplicationController
     if Node.destroy(params[:id])
       redirect_to '/'
     else
-      flash[:error] = 'Deletion failed'
+      flash[:alert] = 'Deletion failed'
       render 'edit'
     end
   end

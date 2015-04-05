@@ -3,6 +3,7 @@
 = link_to('Delete node',                     |
           node_path(@node),                  |
           method: :delete,                   |
+          class: 'btn btn-danger',           |
           data: { confirm: 'Are you sure?'}) |
 
 = render 'form'

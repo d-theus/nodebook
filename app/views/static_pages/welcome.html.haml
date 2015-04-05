@@ -1,9 +1,59 @@
 %center
   %h1 Nodebook
   %h3 
-    All your nodes organized in a memorable way.
-  =link_to 'Learn more', about_path, class: :btn
-  or
+    All your notes organized in a memorable way.
+  %br
+  %br
+  %br
+  %br
+  %br
+  %br
+  %h3
+    Already have an account?
+  =link_to 'Log in', new_user_session_path, class: :btn
+
+  %h3
+    No? Here is why you should!
+
+%div.alter-left
+  %div.alter-pic
+  %div.alter-text
+    %h4
+      What would typical application for notetaking look like?
+    %h5
+      You have notebooks, notes. You assign some tags for navigation,
+      maybe some hyperlinks here and there.
+
+%div.alter-right
+  %div.alter-pic
+  %div.alter-text
+    %h4
+      What would typical mind map tool look like?
+    %h5
+      You have maps, which are look pretty. Nodes represent some
+      thought or conception, each has some text around. Now suppose
+      you want to put a lot of text into that node. And also connect it
+      to other node, which is a related topic or a definition. Mess.
+
+%div.alter-left
+  %div.alter-pic
+  %div.alter-text
+    %h4
+      "Well, I like my notetaking application..."
+    %h5
+      Remember last time you were composing note that
+      has complex enough structure. Were that app messing
+      with your lists, tables or pictures? And what about
+      math?
+
+%center
+  %h4
+    Nodebook is made with this problems in mind. 
+  %ul
+    %li Bring structure to notes by connecting them
+    %li See knowledge structure
+    %li Composing notes is lightning fast
+
   =link_to 'Sign up', new_user_registration_path, class: :btn
   or
-  =link_to 'Log in', new_user_session_path, class: :btn
+  =link_to 'Learn more', about_path, class: :btn

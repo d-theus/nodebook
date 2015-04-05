@@ -24,13 +24,20 @@ ready = ()->
       height: '100%'
       stabilize: true,
       edges: {
-        style: 'arrow'
+        style: 'arrow',
+        color: '#306060',
+        arrowScaleFactor: 0.7
+      }
+      nodes: {
+        color: { background: '#a05050' }
       }
     }
+
 
     vis.net = new vis.Network(
       document.getElementById 'network',
     vis.data, opt)
+
 
     $(window).on 'resize', ()->
       vis.net.redraw()
