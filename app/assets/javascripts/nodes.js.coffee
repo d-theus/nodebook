@@ -4,6 +4,7 @@
 #= require 'vis.min'
 #= require 'tjax'
 #= require 'md_editor'
+#= require 'node_menu'
 
 ready = ()->
   if document.getElementById('network')
@@ -42,13 +43,12 @@ ready = ()->
     $(window).on 'resize', ()->
       vis.net.redraw()
 
-    menu = $('#network_menu')
+    menu = new Menu('network',
+      [{ label: 'View' },
+      { label: 'Edit content' },
+      { label: 'Add child node' }]
+    )
     inew = $('#instant_new')
-
-    hideMenu = ()->
-      menu.addClass 'hidden'
-      inew.addClass 'hidden'
-      true
 
     vis.net.on 'select', (prop)->
       ids = prop.nodes
@@ -57,23 +57,19 @@ ready = ()->
         pos = vis.net.getPositions(ids[0])[ids[0]]
         posDOM = vis.net.canvasToDOM(pos)
         netDOM = $('#network').offset()
-        menu.css('left', "#{Math.ceil (posDOM.x + netDOM.left)}px")
-        menu.css('top', "#{Math.ceil (posDOM.y + netDOM.top)}px")
-        $('#network_menu_open').attr('href', "/nodes/#{ids[0]}")
-        $('#network_menu_edit').attr('href', "/nodes/edit/#{ids[0]}")
-        $('#network_menu_add_child').on 'click', ()->
-          menu.addClass 'hidden'
-          inew.removeClass 'hidden'
-          inew.css('left', "#{Math.ceil (posDOM.x + netDOM.left)}px")
-          inew.css('top', "#{Math.ceil (posDOM.y + netDOM.top)}px")
-          inew.html(
-            $.ajax("nodes/instant_new_for/#{ids[0]}", { async: false }).responseText
-          )
-        menu.removeClass 'hidden'
+        menu.items[0].url = "/nodes/#{ids[0]}"
+        menu.items[1].url = "/nodes/edit/#{ids[0]}"
+        menu.items[2].url = "/nodes/instant_new_for/#{ids[0]}"
+        menu.open(
+          Math.ceil(posDOM.x + netDOM.left),
+          Math.ceil(posDOM.y + netDOM.top)
+        )
       else
-        menu.addClass 'hidden'
-    vis.net.on 'dragStart', hideMenu
-    vis.net.on 'viewChanged', hideMenu
+        menu.close()
+    vis.net.on 'dragStart', ()->
+      menu.close()
+    vis.net.on 'viewChanged', ()->
+      menu.close()
 
 
   if document.getElementById('editor_pair')

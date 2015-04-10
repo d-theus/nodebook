@@ -14,3 +14,4 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require 'nodes.js'
+//= require 'snap.svg-min.js'
