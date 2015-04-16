@@ -1,0 +1,13 @@
+%h1 Create child for #{@parent.title}
+= simple_form_for @parent do |pf|
+  = pf.simple_fields_for @node do |f|
+    = f.input :title
+    = f.input :tag_list, label: 'Tags', placeholder: 'Comma separated list'
+    %div.input.optional
+      %label.string.optional Quick search
+      %input.string.optional#search{type: 'text', placeholder: 'Title, tag or both...'}
+      = inline_svg 'icons/plus'
+    = f.input :content
+    %div.input
+      = render 'shared/md_editor'
+    = f.submit

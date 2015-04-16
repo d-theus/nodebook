@@ -67,12 +67,28 @@ ready = ()->
       else
         menu.close()
     vis.net.on 'dragStart', ()->
+      vis.net.selectNodes([])
       menu.close()
     vis.net.on 'viewChanged', ()->
+      vis.net.selectNodes([])
       menu.close()
 
 
   if document.getElementById('editor_pair')
-    editor = new Editor('node_content')
+    id = if document.getElementById('node_content')
+      'node_content'
+    else
+      'node_node_content'
+    editor = new Editor(id)
+  if document.getElementById('search')
+    search = $('#search')
+    search.on 'change', ()->
+      #return false unless search.val().length > 3
+      query = search.val()
+      results = $.ajax("/nodes/search?query=#{query}", {
+        async: false,
+        dataType: 'script'
+      }).responseText
+      alert JSON.stringify(results)
 $(document).on 'page:load', ready
 $(document).ready ready

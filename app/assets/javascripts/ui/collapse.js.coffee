@@ -1,0 +1,1 @@
+/home/slowness/Programming/web/ui/javascripts/collapse.js.coffee

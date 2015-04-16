@@ -8,23 +8,20 @@
   %body
     %div.main
       %header
-        %hgroup
-          %a{ href: (user_signed_in? ? '/' : welcome_path) }
-            %span N
-            = inline_svg 'logo'
-            %span debook
-        %nav
-          %ul
+        %a.logo{ href: (user_signed_in? ? '/' : welcome_path) }
+        %nav.collapse
+          %ul.collapses#header_collapse
             - if user_signed_in?
               %li= link_to 'My nodebook', '/'
               %li= link_to 'Log out', destroy_user_session_path, method: :delete
             - else
               %li= link_to 'Log in', new_user_session_path
-      %div.information
-        -if notice
-          %span.notice= notice
-        -if alert
-          %span.alert= alert
+          %span.toggle.icon-86{ 'data-collapse' => 'header_collapse' }
+            =inline_svg 'icons/menu'
+      -if notice
+        %p.notice= notice
+      -if alert
+        %p.alert= alert
 
       %div.content
         = yield

@@ -7,9 +7,9 @@ class Node < ActiveRecord::Base
 
   def refs_from_source
     content
-    .scan(/\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?:\n+|)/)
+    .scan(/\[([^\]]+)\]: *<?([^\s>]+)>?(?: +[(]([^\n]+)[)])? *(?:\n+|)/)
     .map { |m| m[1] }
-    .select { |href| href[/^['"]?\/?nodes['"]?/] }
-    .map { |href| href[/.*\/(\d+)['"]?$/]; $1.to_i }
+    .select { |href| href[/^\/nodes\//] }
+    .map { |href| href[/.*\/(\d+)$/]; $1.to_i }
   end
 end

@@ -15,3 +15,4 @@
 //= require turbolinks
 //= require 'nodes.js'
 //= require 'snap.svg-min.js'
+//= require 'ui/collapse.js'

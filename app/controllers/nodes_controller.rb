@@ -9,7 +9,6 @@ class NodesController < ApplicationController
   def instant_new_for
     @parent = Node.find(params[:id])
     @node = @parent.neighbours.build
-    render partial: 'instant_form'
   end
 
   def create
@@ -33,13 +32,15 @@ class NodesController < ApplicationController
       @child.user = current_user
       if @child.save
         make_references(@child)
-        @parent.content += "\n[#{@child.title}]: \"/nodes/#{@child.id}\""
-        make_references(@parent)
-        flash[:alert] = 'Failed to associate nodes'
+        @parent.content += "\n[#{@child.title}]: /nodes/#{@child.id}"
+        unless make_references(@parent)
+          flash[:alert] = 'Failed to associate nodes'
+        end
+        redirect_to node_path(@child)
       else
         flash[:alert] = 'Failed to create child'
+        redirect_to '/'
       end
-      redirect_to '/'
     else
       if @node.update(node_params)
         make_references(@node)
@@ -70,6 +71,15 @@ class NodesController < ApplicationController
     end
   end
 
+  def search
+    @results = Node.find_by_sql(
+      'SELECT title FROM nodes WHERE title LIKE ?',
+      [params[:query]])
+    respond_to do |f|
+      f.js
+    end
+  end
+
   private
 
   def fetch_node
@@ -92,7 +102,7 @@ class NodesController < ApplicationController
     actual = node.refs_from_source
     node.references.where('neighbour_id in (?)', old - actual).delete_all
     node.references.build( (actual - old).map { |n| {neighbour_id: n} })
-    node.save!
+    node.save
   end
 
   def new_node

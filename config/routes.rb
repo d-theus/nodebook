@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'references/destroy'
 
   get 'nodes/new', as: :node_new
+  get 'nodes/search', to: 'nodes#search', as: :nodes_search
   get 'nodes/instant_new_for/:id', to: 'nodes#instant_new_for'
   get 'nodes/edit/:id', to: 'nodes#edit', as: :node_edit
   get 'nodes/:id', to: 'nodes#show', as: :node
