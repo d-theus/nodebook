@@ -1,26 +1,19 @@
-.alter{
-  height: 256px;
-  width: 100%;
-  &:after { clear: both; }
-  padding: 32px 8px;
-}
-.alter-pic{
-  position: relative;
-  width: 33%;
-  img{
-    width: 100%;
+article>div{
+  .flaticon:before{
+    font-size: 192px;
+    margin: 0px 10px;
   }
-}
-.alter-text{
-  width: 66%;
-}
-.alter-left{
-  .alter-text { float: left; }
-  .alter-pic { float: right; }
-  .alter
-}
-.alter-right{
-  .alter-text { float: right; }
-  .alter-pic { float: left; }
-  .alter
+  div.tile-row{
+    justify-content: space-around;
+  }
+  &:nth-of-type(2n+1){
+    div.tile-row{
+      flex-direction: row-reverse;
+    }
+  }
+  &:nth-of-type(2n){
+    div.tile-row{
+      flex-direction: row;
+    }
+  }
 }

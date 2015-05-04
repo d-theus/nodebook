@@ -20,8 +20,8 @@ Rails.application.configure do
     address:         'smtp.mandrillapp.com',
     port:            587,
     domain:          'mandrill.com',
-    user_name:       'slma0x02@gmail.com',
-    password:        '5eb4J0DIZAvLxb6B_E3Ihg', #FIXME: still bad enough even for development code
+    user_name:       ENV['SMTP_SETTINGS_USER_NAME'],
+    password:        ENV['SMTP_SETTINGS_PASSWORD'],
     authentication:  'plain',
     enable_starttls_auto: true
   }

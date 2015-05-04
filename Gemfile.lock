@@ -1,3 +1,15 @@
+PATH
+  remote: ../web/more-responsive-less-ui/
+  specs:
+    more_responsive_less_u_i-rails (0.0.7)
+      coffee-rails
+      less-rails
+
+PATH
+  remote: ../web/svg_nodes-rails
+  specs:
+    svg_nodes-rails (0.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -197,12 +209,14 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   less-rails
+  more_responsive_less_u_i-rails (>= 0.0.7)!
   pry-rails
   rails (= 4.1.7)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   simple_form
   sqlite3
+  svg_nodes-rails!
   therubyracer
   thin
   turbolinks

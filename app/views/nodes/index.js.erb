@@ -3,9 +3,10 @@
   <% val = ns.reduce(ns.size) { |acc, e| acc += e.neighbours.size } %>
   <% {
     id: n.id,
+    x: n.x,
+    y: n.y,
     label: n.title,
-    radius: 10 + 2*val,
-    shape: 'dot'
+    r: 10 + 2*val
   } %>
 <% end %>
 <%= raw ns.to_json %>

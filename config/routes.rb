@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   get 'nodes/new', as: :node_new
   get 'nodes/search', to: 'nodes#search', as: :nodes_search
-  get 'nodes/instant_new_for/:id', to: 'nodes#instant_new_for'
+  patch 'nodes/sync', to: 'nodes#sync'
   get 'nodes/edit/:id', to: 'nodes#edit', as: :node_edit
   get 'nodes/:id', to: 'nodes#show', as: :node
   delete 'nodes/:id', to: 'nodes#destroy'

@@ -5,10 +5,13 @@
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
+    %meta{ content: "user-scalable=no, initial-scale=1, maximum-scale=1", name: "viewport" }
   %body
     %div.main
       %header
         %a.logo{ href: (user_signed_in? ? '/' : welcome_path) }
+          =image_tag 'logo.svg'
+          Nodebook
         %nav.collapse
           %ul.collapses#header_collapse
             - if user_signed_in?
@@ -16,8 +19,7 @@
               %li= link_to 'Log out', destroy_user_session_path, method: :delete
             - else
               %li= link_to 'Log in', new_user_session_path
-          %span.toggle.icon-86{ 'data-collapse' => 'header_collapse' }
-            =inline_svg 'icons/menu'
+          %span.toggle.flaticon.flaticon-menu{ 'data-collapse' => 'header_collapse' }
       -if notice
         %p.notice= notice
       -if alert
@@ -30,3 +32,4 @@
           %nav
             %ul
               %li= link_to 'About', about_path
+    = yield :fixes 

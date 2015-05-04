@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150323105753) do
+ActiveRecord::Schema.define(version: 20150428085935) do
 
   create_table "nodes", force: true do |t|
     t.string   "title"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20150323105753) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.integer  "x"
+    t.integer  "y"
   end
 
   create_table "references", force: true do |t|

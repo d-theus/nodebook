@@ -17,6 +17,8 @@ gem 'ace-rails-ap'
 gem 'simple_form'
 gem 'pry-rails'
 gem 'devise'
+gem 'more_responsive_less_u_i-rails', '>=0.0.7', path: '../web/more-responsive-less-ui/'
+gem 'svg_nodes-rails', path: '../web/svg_nodes-rails'
 group :development do
   gem 'capistrano'
   gem 'capistrano-rails'

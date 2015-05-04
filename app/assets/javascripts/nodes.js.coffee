@@ -8,87 +8,78 @@
 
 ready = ()->
   if document.getElementById('network')
-    vis.data = {
-      nodes: [],
-      edges: []
-    }
+    window.map = new SvgNodes.Map('#network')
 
-    $.ajax('nodes', {dataType: 'script'}).done (data)->
-      vis.data.nodes = JSON.parse data
-      vis.net.setData({ nodes: vis.data.nodes, edges: vis.data.edges})
-    $.ajax('references/index', {dataType: 'script'}).done (data)->
-      vis.data.edges = JSON.parse data
-      vis.net.setData({ nodes: vis.data.nodes, edges: vis.data.edges})
-
-    opt = {
-      width: '100%',
-      height: '100%'
-      stabilize: true,
-      edges: {
-        style: 'arrow',
-        color: '#306060',
-        arrowScaleFactor: 0.7
-      }
-      nodes: {
-        color: { background: '#a05050' }
-      }
-    }
-
-
-    vis.net = new vis.Network(
-      document.getElementById 'network',
-    vis.data, opt)
-
-
-    $(window).on 'resize', ()->
-      vis.net.redraw()
-
-    menu = new Menu('network',
-      [{ label: 'View' },
-      { label: 'Edit content' },
-      { label: 'Add child node' }]
-    )
-    inew = $('#instant_new')
-
-    vis.net.on 'select', (prop)->
-      ids = prop.nodes
-      inew.addClass 'hidden'
-      if ids.length > 0
-        pos = vis.net.getPositions(ids[0])[ids[0]]
-        posDOM = vis.net.canvasToDOM(pos)
-        netDOM = $('#network').offset()
-        menu.items[0].url = "/nodes/#{ids[0]}"
-        menu.items[1].url = "/nodes/edit/#{ids[0]}"
-        menu.items[2].url = "/nodes/instant_new_for/#{ids[0]}"
-        menu.open(
-          Math.ceil(posDOM.x + netDOM.left),
-          Math.ceil(posDOM.y + netDOM.top)
-        )
+    openEditor = ->
+      id = if document.getElementById('node_content')
+        'node_content'
       else
-        menu.close()
-    vis.net.on 'dragStart', ()->
-      vis.net.selectNodes([])
-      menu.close()
-    vis.net.on 'viewChanged', ()->
-      vis.net.selectNodes([])
-      menu.close()
+        'node_node_content'
+      editor = new Editor(id)
+    bindCloseToSubmit = ->
+      $('.modal input[name="commit"]').on 'click', (e)->
+        setTimeout ->
+          document.querySelector('.modal').close()
+          refresh()
+        , 500
 
 
-  if document.getElementById('editor_pair')
-    id = if document.getElementById('node_content')
-      'node_content'
-    else
-      'node_node_content'
-    editor = new Editor(id)
-  if document.getElementById('search')
-    search = $('#search')
-    search.on 'change', ()->
-      #return false unless search.val().length > 3
-      query = search.val()
-      results = $.ajax("/nodes/search?query=#{query}", {
-        async: false,
-        dataType: 'script'
-      }).responseText
-      alert JSON.stringify(results)
+    
+    refresh = ->
+      window.map.clear()
+      $.ajax('nodes', {dataType: 'script'}).done (data)->
+        nodes = JSON.parse(data)
+        nodes.forEach (node)->
+          n = map.addNode(node)
+      $.ajax('references/index', {dataType: 'script'}).done (data)->
+        edges = JSON.parse data
+        edges.forEach (edge)->
+          map.addEdge(edge)
+
+    map.addEventListener 'click:map', (e)->
+      m = document.querySelector('.context-menu#nonode')
+      an = m.querySelector('a[name="new"]')
+      an.onclick = ->
+        # FIXME: This is probably going to break
+        # when some transformations applied.
+        $.ajax("/nodes/new?x=#{e.clientX}&y=#{e.clientY}").done (data)->
+          document.querySelector('.modal').open(data)
+          openEditor()
+          bindCloseToSubmit()
+      m.open(e.pageX, e.pageY)
+    map.addEventListener 'click:node', (e)->
+      m = document.querySelector('.context-menu#node')
+      av = m.querySelector('a[name="view"]')
+      av.onclick = ->
+        $.ajax("/nodes/#{e.target.node_id}").done (data)->
+          document.querySelector('.modal').open(data)
+      ae = m.querySelector('a[name="edit"]')
+      ae.onclick = ->
+        $.ajax("/nodes/edit/#{e.target.node_id}").done (data)->
+          document.querySelector('.modal').open(data)
+          openEditor()
+          bindCloseToSubmit()
+      m.open(e.pageX, e.pageY)
+
+    map.addEventListener 'drag:map:start', ()->
+      document.querySelector('.context-menu').close()
+    map.addEventListener 'drag:node:start', ()->
+      document.querySelector('.context-menu').close()
+
+
+
+    sync_anc = $('a[name="sync"]')
+    sync_anc.on 'click', ()->
+      $.ajax
+        url: '/nodes/sync'
+        method: 'PATCH'
+        data:
+          nodes: JSON.stringify(map.nodes.map (n)->
+            { id: n.id, x: n.x, y: n.y })
+
+
+    refresh()
+
+
 $(document).on 'page:load', ready
 $(document).ready ready

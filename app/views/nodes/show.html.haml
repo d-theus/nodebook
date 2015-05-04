@@ -2,8 +2,7 @@
   %center
     %h1= @node.title
 %article#node_preview
-  %script
-    $('#node_preview').html(marked("#{j @node.content.html_safe}"));
+  = @node.content
 %nav
   - parents = Reference.where(:neighbour_id, @node.id)
   - if parents.any?

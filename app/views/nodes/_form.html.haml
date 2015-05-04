@@ -1,6 +1,8 @@
-= simple_form_for @node do |f|
-  = f.input :title
+= simple_form_for(@node, remote: true) do |f|
+  = f.input :title, placeholder: 'Title'
   = f.input :content
+  = f.input :x, as: :hidden
+  = f.input :y, as: :hidden
   %div.input
     = render 'shared/md_editor'
   = f.submit

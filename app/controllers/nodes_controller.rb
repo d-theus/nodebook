@@ -4,11 +4,21 @@ class NodesController < ApplicationController
   before_action :new_node, only: [:new, :create]
 
   def new
+    @node.x = params[:x]
+    @node.y = params[:y]
+    respond_to do |f|
+      f.html { render layout: !request.xhr? }
+    end
   end
 
-  def instant_new_for
-    @parent = Node.find(params[:id])
-    @node = @parent.neighbours.build
+  def sync
+    nodes = JSON.parse params[:nodes]
+    nodes.each do |node|
+      current_user.nodes
+      .find(node['id'])
+      .update(x: node['x'], y: node['y'])
+    end
+    render nothing: true, status: 200
   end
 
   def create
@@ -23,6 +33,9 @@ class NodesController < ApplicationController
   end
 
   def edit
+    respond_to do |f|
+      f.html { render layout: !request.xhr? }
+    end
   end
 
   def update
@@ -62,6 +75,9 @@ class NodesController < ApplicationController
   end
 
   def show
+    respond_to do |f|
+      f.html { render layout: !request.xhr? }
+    end
   end
 
   def index
@@ -87,7 +103,7 @@ class NodesController < ApplicationController
   end
 
   def node_params
-    params.require(:node).permit(:title, :content, :level)
+    params.require(:node).permit(:title, :content, :level, :x, :y)
   end
 
   def child_params

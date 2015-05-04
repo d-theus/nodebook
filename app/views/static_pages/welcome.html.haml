@@ -1,18 +1,22 @@
-%center
-  %h1 Nodebook
-  %h3 
-    All your notes organized in a memorable way.
-  %br
-  %br
-  %h3
-    Already have an account?
-  =link_to 'Log in', new_user_session_path, class: :btn
+%div.tiles
+  %div.tile-row.primary.screen
+    %center.tile.vcenter.tiles
+      %h1.tile-row Nodebook
+      %h3.tile-row 
+        All your notes organized in a memorable way.
 
-  %h3
-    No? Here is why you should!
+  %div.tile-row.screen
 
+    %center.tile.alt1.spl2.tiles
+      %h3.tile-row
+        Already have an account?
+      %h3= link_to 'Log in', new_user_session_path, class: :btn
 
+    %center.tile.alt2.spl2.tiles
+      %h3.tile-row
+        No? Here is why you should!
 
-  =link_to 'Sign up', new_user_registration_path, class: :btn
-  or
-  =link_to 'Learn more', about_path, class: :btn
+      %h3.tile-row
+        =link_to 'Sign up', new_user_registration_path, class: :btn
+        &nbsp; or &nbsp;
+        =link_to 'Learn more', about_path, class: :btn

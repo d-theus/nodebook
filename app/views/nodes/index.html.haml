@@ -1,11 +1,31 @@
-%div#instant_new.menu.hidden
-%div#edit_style.menu.hidden
 %div.main
   %center
     %h1 My nodebook
     %div#network_panel
-      %a.btn{ href: node_new_path }
-        %span.icon-16
-          = inline_svg 'icons/plus'
-        Create new node
-    %div#network
+      %a.btn{ name: 'sync' }
+        %span.flaticon.flaticon-connected Sync
+    %svg#network
+
+- content_for :fixes do
+  %div.context-menu#node
+    %span.flaticon.flaticon-arrow-left
+    %ul
+      %li
+        %a{ name: 'edit', 'data-remote' => 'true' }
+          %span.flaticon.flaticon-pen Edit this node
+      %li
+        %a{ name: 'view', 'data-remote' => 'true' }
+          %span.flaticon.flaticon-eye View this node
+
+  %div.context-menu#nonode
+    %span.flaticon.flaticon-arrow-left
+    %ul
+      %li
+        %a{ name: 'new',  'data-remote' => 'true' }
+          %span.flaticon.flaticon-stack Create new node
+
+
+  %div.modal
+    %div.modal-header
+      %a.flaticon.flaticon-cross.toggle{ 'data-remote' => 'true' }
+    %div.modal-content
