@@ -2,8 +2,9 @@
   %center
     %h1 My nodebook
     %div#network_panel
-      %a.btn{ name: 'sync' }
+      %a.btn{ name: 'sync', tooltiptext: "Remember each node's position" }
         %span.flaticon.flaticon-connected Sync
+      %input.search{type: 'text', placeholder: 'Search for node...'}
     %svg#network
 
 - content_for :fixes do

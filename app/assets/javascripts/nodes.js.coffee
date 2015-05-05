@@ -66,8 +66,21 @@ ready = ()->
     map.addEventListener 'drag:node:start', ()->
       document.querySelector('.context-menu').close()
 
-
-
+    search = document.querySelector('#network_panel>input')
+    search.addEventListener 'keyup', (e)->
+      clearTimeout search.timeout if search.timeout?
+      search.timeout = setTimeout ->
+        val = search.value
+        if val.length < 3
+          node.dim() for node in map.nodes
+        else
+          for node in map.nodes
+            if node.text.startsWith(val)
+              node.highlight()
+            else
+              node.dim()
+        true
+      , 200
     sync_anc = $('a[name="sync"]')
     sync_anc.on 'click', ()->
       $.ajax

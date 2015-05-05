@@ -8,7 +8,7 @@
     %meta{ content: "user-scalable=no, initial-scale=1, maximum-scale=1", name: "viewport" }
   %body
     %div.main
-      %header
+      %header.navbar
         %a.logo{ href: (user_signed_in? ? '/' : welcome_path) }
           =image_tag 'logo.svg'
           Nodebook
@@ -27,9 +27,9 @@
 
       %div.content
         = yield
-      %footer
-        %center
-          %nav
-            %ul
-              %li= link_to 'About', about_path
+
+      %footer.navbar-center
+        %nav
+          %ul
+            %li= link_to 'About', about_path
     = yield :fixes 

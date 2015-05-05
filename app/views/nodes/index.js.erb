@@ -3,8 +3,8 @@
   <% val = ns.reduce(ns.size) { |acc, e| acc += e.neighbours.size } %>
   <% {
     id: n.id,
-    x: n.x,
-    y: n.y,
+    x: n.x || 0,
+    y: n.y || 0,
     label: n.title,
     r: 10 + 2*val
   } %>

@@ -21,34 +21,29 @@
         notes be organized in an easy memorable
         way.
   %h2 Concepts
-  %h3 Node
-  %p
-    Think of it as a single note, though it is
-    not necessarily a full and multisectioned
-    article. It could be index, section or even
-    a single definition as well.
-  %p
-    Nodes have levels. Level is a value of node
-    given by you. It's meant to organize nodes
-    hierarchically, i.e. topic index should have
-    greater value than articles, section or
-    definitions it refers to.
-  %p
-    Greater level also force node to be bigger
-    and arranged highter on a <a href="#map">map</a>.
-  %p
-    Nodes also have title that shown on a map
-    to identify a node and content, which is
-    text written basically in <a href="#mde">extended
-    markdown</a>.
-  %h3#map Map
-  %p
-    Map is a graphical representation of your
-    nodebook: all the nodes are shown here
-    according to their levels from top to
-    bottom. If one node <a href="#ref">referred</a> to
-    another there is an edge(arrow), pointing from
-    the referring node to the referred one.
+  %div.tiles.tile-row
+    %h3.tile-row Node
+    %div.tile-row
+      =image_tag 'about-node.svg', width: '50%'
+      %p.spl2
+        Think of it as a single note, though it is
+        not necessarily a full and multisectioned
+        article. It could be index, section or even
+        a single definition as well.
+    %p.tile-row
+      Nodes have <em>&nbsp;titles&nbsp;</em> which are shown
+      on a map to identify it.
+  %div.tiles.tile-row
+  %h3#map.tile-row Map
+  %div.tile-row
+    =image_tag 'about-map.svg', width: '50%'
+    %p.spl2
+      <em>Map</em> is a graphical representation of your
+      nodebook: all the nodes are shown here
+      along with their titles and connections.
+      If one node contains a <em>reference</em>
+      to the other, there is an edge(line), pointing
+      from the referring node to the referred one.
 
   %h3#ref Reference
   %p
@@ -57,30 +52,38 @@
     represented just as link definitions at the
     bottom of node's content.
   %p
-    For A to have edge to B there must be a link
-    definition in the content of A.
+    For A to have edge to B there must be a <em>link
+    definition</em> in the content of A:
+    <pre><code> [edge]: /url/to/edge/definition. </code></pre>
   %p
     Just use that definition somewhere in A's
-    content to refer to B.
+    content to refer to B:
+    <pre><code> nodes are connected by an [edge](). </code></pre>
+
+  %p
+    It is not mandatory for link to be defined before usage.
+    For simplicity sake it's recommended to put all definitions
+    after node's body.
 
   %h2 Composing nodes
   %p
-    When you click 'Add node' button above the map or
-    click 'Add child' or 'Edit' in a node's menu inside
-    a map, you will find yourself on a nodes edit page.
-  %p
-    Here you can (re)name node, (re)assign level and edit
-    node's content.
+    To create new node, click on an empty space on a map
+    right where you want new node to be placed. In context
+    menu select "Create new node". Here you go, give it a
+    name, fill up with content and submit.
+
   %h3 Editor
   %p
-    Editor is two-sided. One is a text-editor and the other
-    is a rendered result, what you will see as node's content
-    when you are done.
+    When creating new node, or editing an existing
+    one, you are faced with an <em>editor</em>.
+    It is two-sided. One is a text-editor and
+    the other is a rendered result, what you will see
+    as node's content when you are done.
   %p#mde
     Language of the source text in that text-editor side is
     <a href="http://wikipedia.org/wiki/markdown">markdown</a>.
     There are also some extensions to typeset mathematical formulas
-    using latex.
+    using <a href="http://wikipedia.org/wiki/LaTeX">LaTeX</a>.
   %p
     To type inline math formulae, surround it with dollar signs($).
     For block math, use double dollar signs. Also see <a href="#examples">
