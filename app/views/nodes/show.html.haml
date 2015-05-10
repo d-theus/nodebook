@@ -1,7 +1,6 @@
-%article
-  %center
-    %h1= @node.title
-%article#node_preview
+%article.row
+  %h1= @node.title
+%article#preview
   = @node.content
 %nav
   - parents = Reference.where(:neighbour_id, @node.id)

@@ -12,14 +12,14 @@
         %a.logo{ href: (user_signed_in? ? '/' : welcome_path) }
           =image_tag 'logo.svg'
           Nodebook
-        %nav.collapse
+        %nav.hor.collapse
           %ul.collapses#header_collapse
             - if user_signed_in?
               %li= link_to 'My nodebook', '/'
               %li= link_to 'Log out', destroy_user_session_path, method: :delete
             - else
               %li= link_to 'Log in', new_user_session_path
-          %span.toggle.flaticon.flaticon-menu{ 'data-collapse' => 'header_collapse' }
+          %div.toggle.flaticon.flaticon-menu{ 'data-collapse' => 'header_collapse' }
       -if notice
         %p.notice= notice
       -if alert

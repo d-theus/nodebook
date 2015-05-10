@@ -1,5 +1,5 @@
-//= require 'editor'
 //= require 'normalize'
+//= require 'm_d_e'
 
 @header-height: 96px;
 
@@ -16,28 +16,15 @@
 @import 'references.less';
 @import 'nodes.less';
 
-article {
-  position: relative;
-  width: 66%;
-  left: 16%;
-
-  ul li {
-    list-style-type: none;
-    &:before{
-      content: counter(item, disc) ' ';
-    }
-  }
-
-  a {
-    .flaticon-10;
-    .flaticon-link;
-    &:before{
-      vertical-align: super;
-    }
+article a {
+  .flaticon-10;
+  .flaticon-link;
+  &:before{
+    vertical-align: super;
   }
 }
 
-#md_render {
+#mde_render {
   font-family: 'Libre Baskerville';
   h1,h2,h3,h4,h5,h6 { font-style: normal; }
   pre {
@@ -52,6 +39,10 @@ article {
   50%{ opacity: 0; }
   99%{ opacity: 0; }
   to { opacity: 0; transform: scaleX(0);}
+}
+
+footer{
+  border-top: 1px solid @color-header-text;
 }
 
 ///

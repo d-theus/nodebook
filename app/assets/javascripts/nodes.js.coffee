@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 #= require 'vis.min'
 #= require 'tjax'
-#= require 'md_editor'
+#= require 'm_d_e'
 #= require 'node_menu'
 
 ready = ()->
@@ -53,6 +53,8 @@ ready = ()->
       av.onclick = ->
         $.ajax("/nodes/#{e.target.node_id}").done (data)->
           document.querySelector('.modal').open(data)
+          pre = document.getElementById('preview')
+          pre.innerHTML = marked pre.innerHTML
       ae = m.querySelector('a[name="edit"]')
       ae.onclick = ->
         $.ajax("/nodes/edit/#{e.target.node_id}").done (data)->
@@ -89,10 +91,7 @@ ready = ()->
         data:
           nodes: JSON.stringify(map.nodes.map (n)->
             { id: n.id, x: n.x, y: n.y })
-
-
     refresh()
-
 
 $(document).on 'page:load', ready
 $(document).ready ready
