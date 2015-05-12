@@ -1,13 +1,16 @@
-div.landing{
+section {
+  h2 { text-align: center; }
+
   .flaticon:before{
     font-size: 192px;
     margin: 0px 10px;
   }
 
-  font-size: 0.8cm;
+  &:nth-of-type(2n){
+    .row { flex-direction: row-reverse;}
+  }
 
-  width: 88vw;
-  margin-left: 6vw;
+  font-size: 1,3em;
 }
 
 article{
