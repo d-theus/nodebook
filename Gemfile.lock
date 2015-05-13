@@ -1,12 +1,4 @@
 PATH
-  remote: ../m_d_e-rails
-  specs:
-    m_d_e-rails (0.1.0)
-      ace-rails-ap
-      coffee-rails
-      marked-rails
-
-PATH
   remote: ../web/more-responsive-less-ui/
   specs:
     more_responsive_less_u_i-rails (0.0.7)
@@ -110,6 +102,10 @@ GEM
       actionpack (>= 3.1)
       less (~> 2.6.0)
     libv8 (3.16.14.7)
+    m_d_e-rails (0.1.0)
+      ace-rails-ap
+      coffee-rails
+      marked-rails
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     marked-rails (0.3.2.0)
@@ -218,8 +214,8 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   less-rails
-  m_d_e-rails!
-  more_responsive_less_u_i-rails (>= 0.0.7)!
+  m_d_e-rails
+  more_responsive_less_u_i-rails!
   pry-rails
   rails (= 4.1.7)
   sass-rails (~> 4.0.3)
