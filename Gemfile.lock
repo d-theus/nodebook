@@ -1,12 +1,12 @@
 PATH
-  remote: ../web/more-responsive-less-ui/
+  remote: ./vendor/package/more-responsive-less-ui/
   specs:
     more_responsive_less_u_i-rails (0.0.7)
       coffee-rails
       less-rails
 
 PATH
-  remote: ../web/svg_nodes-rails
+  remote: ./vendor/package/svg_nodes-rails
   specs:
     svg_nodes-rails (0.0.1)
 
